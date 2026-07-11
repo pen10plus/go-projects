@@ -41,7 +41,7 @@ func main() {
 	http.HandleFunc("/form", formHandler)
 	http.HandleFunc("/hello", helloHandler)
 
-	fmt.Printf("Starting server at port 8000")
+	fmt.Printf("Starting server at port 8000 \n http://localhost:8000")
 
 	if err := http.ListenAndServe(":8000", nil); err != nil {
 		log.Fatal(err)
