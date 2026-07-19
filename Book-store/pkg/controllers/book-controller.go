@@ -12,10 +12,16 @@ import(
 
 var NewBook models.Book
 
-func GetBook(w http.ResponseWriter,r *http.Request){
+func GetBook(w http.ResponseWriter, r *http.Request) {
 	newBooks := models.GetAllBooks()
-	res,_=json.Marshal(newBooks)
-	w.Header().set("content-type","pkglication/json")
+
+	res, err := json.Marshal(newBooks)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 	w.Write(res)
 }
@@ -51,7 +57,7 @@ vars := mux.Vars(r)
 bookId := vars["bookId"]
 ID, err := strconv.ParseInt(bookId, 0, 0)
 if err != nil {
-	fmt.println("error while parsing")
+	fmt.Println("error while parsing")
 }
 
 book := models.DeleteBook(ID)

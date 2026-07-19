@@ -1,10 +1,10 @@
 package routes
 
-import {
-	"github.com/gorills/mux"
-	"github.com/pen10plus/Book-store/pkg/controllers/"
+import (
+	"github.com/gorilla/mux"
+	"github.com/pen10plus/Book-store/pkg/controllers"
 
-}
+)
 
 var RegisterBookStoreRoutes = func(router *mux.Router){
 	router.HandleFunc("/book/", controllers.CreateBook).Methods("POST")

@@ -8,14 +8,14 @@ import(
 var db *gorm.DB
 
 type Book struct{
-	gorm.model 
+	gorm.Model 
 	Name string `gorm:""json:"name"`
 	Author string `json:"author"`
     Publication string `json:"publication"`
 
 }
 
-func init(){
+func InitDB(){
 	config.Connect()
 	db=config.GetDB()
 	db.AutoMigrate(&Book{})

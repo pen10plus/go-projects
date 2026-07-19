@@ -2,7 +2,7 @@ package utils
 
 import(
 	"encoding/json"
-	"io/io/ioutil"
+	"io/ioutil"
 	"net/http"
 
 )

@@ -5,10 +5,14 @@ import (
 	"net/http"
 	"github.com/gorilla/mux"
 	"github.com/pen10plus/Book-store/pkg/routes"
-	"github.com/jinzhu/gorm/dialects/mysql"
+	"github.com/pen10plus/Book-store/pkg/models"
+	// "github.com/jinzhu/gorm/dialects/mysql"
 )
 
 func main(){
+	// Initialize database
+	models.InitDB()
+	
 	r := mux.NewRouter()
 	routes.RegisterBookStoreRoutes(r)
 	http.Handle("/", r)
